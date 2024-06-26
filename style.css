@@ -37,7 +37,7 @@ body{
     align-items: center;
     height: 17vh; 
 
-}
+    }   
     .nav-links{
         gap: 2rem;
         list-style: none;
@@ -158,6 +158,8 @@ body{
         height: 400px;
         width: 200px;
         margin: auto 0;
+        border-radius: 2rem;
+    
     } 
     .section__text{
         align-self: center;
@@ -181,22 +183,25 @@ body{
         font-size: 2rem;
         text-align: center;    
     }
+    
     #socials-container{
         display: flex;
         justify-content: center;
         margin-top: 2rem;
         gap: 1rem;
     }
+    
     /*ICONS*/
-    .icon{
+    .icon, .icon-git{
         cursor: pointer;
         height: 2rem;
     }
-    .icon:hover{
-        background-color: rgb(202, 197, 197);
+    .icon-git:hover{
+        background-color: rgba(0, 0, 0, 0.199);
         transition: all 300ms ease;
         border-radius: 1rem;
     }
+    
     /*BUTTONS*/
 
     .btn-container{ 
@@ -241,7 +246,15 @@ body{
     .btn-container {
         gap: 1rem;
     }
-    /*ABOUT SECTION*/
+    .arrow1{
+        position: absolute;
+        right: 3.5rem;
+        bottom: 2.5rem;
+        height: 100px;
+        width: 100px;
+    }
+
+    /***ABOUT SECTION***/
 #about{ 
     position: relative;
 }
@@ -303,7 +316,7 @@ body{
     justify-content: center;
     flex-direction: column;
 }
-.article-container{
+.article-container {
     display: flex;
     text-align: initial;
     flex-wrap: wrap;
@@ -311,17 +324,125 @@ body{
     gap: 2.5rem;
     justify-content: space-around;
 }
-article{
+article {
     display: flex;
     width: 10rem;
     justify-content: space-around;
     gap: 0.5rem;
 }
-article.icon{
+article.icon {
     cursor: default;
 }
-article p{
-    display: ce;
-    margin-top: 1rem;
-    margin-right: 0rem;
+
+/**PROJECTS**/
+#projects{
+    position: relative;
 }
+.color-container{
+    border-color: rgb(163, 163, 163);
+    background: rgb(250, 250, 250);
+}
+.project-img{ 
+    border-radius:2rem;
+    width: 20%;
+    height: 20%; 
+}
+.project-title{
+    margin: 1rem;
+    color: black;
+}
+.project-btn{
+    color: black;
+    border-color: rgb(163, 163, 163);
+}
+
+/**CONTACT**/
+#contact{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    height: 70vh;
+}
+.contact-info-upper-container{
+    display: flex;
+    justify-content: center;
+    border-radius: 2rem;
+    border: rgb(53, 53, 53) 0.1rem solid;
+    border-color: rgb(163, 163, 163);
+    background: rgb(250, 250, 250);
+    margin: 2rem auto;
+    padding: 0.5 rem;
+}
+
+.contact-info-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5 rem;
+    margin: 1rem;
+}
+
+.contact-info-container p{
+    font-size: larger;
+    padding: .2rem;
+}
+
+
+.contact-icon{
+    cursor: default;
+    width: 30%;
+    height: 30%;
+}
+.contact-info-container p:hover {
+    background-color: rgb(0, 0, 0);
+    transition: all 300ms ease;
+    border-radius: 1rem;
+    padding: .2rem;
+}
+.contact-info-container p:hover a {
+    text-decoration: none;
+    color: white; /* Change this to your desired color */
+}
+
+/**FOOTER**/
+footer{
+height: 26vh;
+margin: 1 rem;
+}
+footer p{
+    text-align: center;
+}
+
+/**ANIMATIONS**/
+@keyframes bounce_4ever {
+    0%, 20%, 50%, 80%, 100% {
+      transform: translateY(0); /* Start at the original position */
+    }
+    40% {
+      transform: translateY(-30px); /* Move up */
+    }
+    60% {
+      transform: translateY(-15px); /* Move slightly up */
+    }
+  }
+  
+  .bounce_4ever {
+    animation: bounce_4ever 2s infinite; /* 2 seconds duration, infinite loop */
+  }
+  
+  @keyframes bounce_sometimes {
+    0%, 2%, 100% {
+      transform: translateY(0); /* Start and end at the original position */
+    }
+    1% {
+      transform: translateY(-30px); /* Move up */
+    }
+    3% {
+      transform: translateY(0); /* Return to the original position */
+    }
+  }
+  
+  .bounce_sometimes {
+    animation: bounce_sometimes 32s infinite; /* 32 seconds duration, infinite loop */
+  }
+  
