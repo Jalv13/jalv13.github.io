@@ -84,6 +84,7 @@ footer nav{
     font-size: 1.5rem;
 }
 .nav-links{
+    padding-top: 1rem;
     flex-direction: column;
     gap: .5rem;
     text-align: center;

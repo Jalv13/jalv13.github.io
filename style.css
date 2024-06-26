@@ -54,12 +54,16 @@ body{
         text-underline-offset: .5rem;
         text-decoration-color: dimgrey;
     }
-    .logo{
-    font-size: 2rem;
-    }
-    .logo:hover{
-        cursor: default;
-    }
+    .logo {
+        display: inline-block;
+        font-size: 2rem;
+      }
+      
+      .logo span {
+        display: inline-block;
+        animation: wave 1.5s 1;
+        animation-delay: calc(var(--i) * 0.1s);
+      }
 
     /*HAMBURGER-MENU*/ 
     #hamburger-nav{ 
@@ -260,12 +264,15 @@ body{
 }
 .about-containers{
     gap: 2rem;
-    margin-bottom: 2rem;
-    margin-top: 2rem;
+    margin-bottom: 1rem;
+    margin-top: 1.5rem;
 }
 .about-details-container{
     justify-content: center;
     flex-direction: column;
+}
+.text-container{
+    padding-bottom: 2rem;
 }
 .about-containers,
 .about-details-container{
@@ -446,3 +453,35 @@ footer p{
     animation: bounce_sometimes 32s infinite; /* 32 seconds duration, infinite loop */
   }
   
+  @keyframes wave {
+    0%, 60%, 100% {
+      transform: translateY(0);
+    }
+    20% {
+      transform: translateY(-15px);
+    }
+  }
+  
+  @keyframes wave {
+    0%, 70%, 100% {
+      transform: translateY(0); /* Start and end at the original position */
+    }
+    20% {
+      transform: translateY(-15px); /* Move up */
+    }
+  }
+  
+  .wave-images-container {
+    position: relative;
+    width: 100%;
+    height: 300px; /* Adjust height as needed */
+    border: 1px solid #ffffff; /* Optional border for visibility */
+    overflow: hidden; /* Ensure images stay within the container */
+  }
+  
+  .wave-image {
+    position: absolute;
+    width: 50px; /* Set the width of the images */
+    height: 50px; /* Set the height of the images */
+    object-fit: contain; /* Ensure the aspect ratio is maintained */
+  }
