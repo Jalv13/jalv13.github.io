@@ -1,98 +1,74 @@
+// Toggle the mobile menu and hamburger icon state
 function toggleMenu() { 
-    const menu = document.querySelector(".menu-links");
-    const icon = document.querySelector(".hamburger-icon");
-    menu.classList.toggle("open");
-    icon.classList.toggle("open");
+    const menuLinks = document.querySelector(".menu-links");
+    const hamburgerIcon = document.querySelector(".hamburger-icon");
+    menuLinks.classList.toggle("open");
+    hamburgerIcon.classList.toggle("open");
 }
+
 document.addEventListener('DOMContentLoaded', () => {
-    const container = document.querySelector('.wave-images-container');
-    const images = container.querySelectorAll('.wave-image');
-    const containerRect = container.getBoundingClientRect();
+    const imageContainer = document.querySelector('.wave-images-container');
+    const floatingImages = imageContainer.querySelectorAll('.wave-image');
+    const containerBounds = imageContainer.getBoundingClientRect();
 
-    let isMouseOver = false;
-
-    // Track mouse position and hover state
-    container.addEventListener('mousemove', (e) => {
-        container.dataset.mouseX = e.clientX - containerRect.left;
-        container.dataset.mouseY = e.clientY - containerRect.top;
-    });
-    container.addEventListener('mouseenter', () => isMouseOver = true);
-    container.addEventListener('mouseleave', () => isMouseOver = false);
-
-    // Initialize image positions and velocities
-    images.forEach(img => {
-        img.dataset.x = Math.random() * (containerRect.width - img.width);
-        img.dataset.y = Math.random() * (containerRect.height - img.height);
-        img.dataset.vx = (Math.random() - 0.5) * 2;
-        img.dataset.vy = (Math.random() - 0.5) * 2;
+    // Initialize image positions and velocities randomly
+    floatingImages.forEach(image => {
+        image.dataset.posX = Math.random() * (containerBounds.width - image.width); // Random initial X position
+        image.dataset.posY = Math.random() * (containerBounds.height - image.height); // Random initial Y position
+        image.dataset.velocityX = (Math.random() - 0.5) * 2; // Random velocity in X direction
+        image.dataset.velocityY = (Math.random() - 0.5) * 2; // Random velocity in Y direction
     });
 
-    function moveImages() {
-        const mouseX = parseFloat(container.dataset.mouseX) || containerRect.width / 2;
-        const mouseY = parseFloat(container.dataset.mouseY) || containerRect.height / 2;
+    // Function to move the images around the container
+    function animateImages() {
+        floatingImages.forEach(image => {
+            let posX = parseFloat(image.dataset.posX);
+            let posY = parseFloat(image.dataset.posY);
+            let velocityX = parseFloat(image.dataset.velocityX);
+            let velocityY = parseFloat(image.dataset.velocityY);
 
-        images.forEach(img => {
-            let x = parseFloat(img.dataset.x);
-            let y = parseFloat(img.dataset.y);
-            let vx = parseFloat(img.dataset.vx);
-            let vy = parseFloat(img.dataset.vy);
+            // Update position based on current velocity
+            posX += velocityX;
+            posY += velocityY;
 
-            if (isMouseOver) {
-                // Calculate direction to mouse
-                const dx = mouseX - x;
-                const dy = mouseY - y;
-                const distance = Math.sqrt(dx * dx + dy * dy);
-
-                // Move towards mouse, but maintain some distance
-                const targetDistance = 100; // Distance to maintain from mouse
-                const force = (distance - targetDistance) / 10000;
-                vx += dx * force;
-                vy += dy * force;
-            } else {
-                // Add small random acceleration when mouse is not over
-                vx += (Math.random() - 0.5) * .01;
-                vy += (Math.random() - 0.5) * .01;
+            // Bounce off container boundaries and reverse velocity if necessary
+            if (posX <= 0 || posX >= containerBounds.width - image.width) {
+                velocityX *= -1;
+                posX = Math.max(0, Math.min(containerBounds.width - image.width, posX));
+            }
+            if (posY <= 0 || posY >= containerBounds.height - image.height) {
+                velocityY *= -1;
+                posY = Math.max(0, Math.min(containerBounds.height - image.height, posY));
             }
 
-            // Apply velocity
-            x += vx;
-            y += vy;
+            // Apply a drag factor to gradually reduce the velocity
+            const dragFactor = 0.99;
+            velocityX *= dragFactor;
+            velocityY *= dragFactor;
 
-            // Bounce off container walls
-            if (x <= 0 || x >= containerRect.width - img.width) {
-                vx *= -1;
-                x = Math.max(0, Math.min(containerRect.width - img.width, x));
-            }
-            if (y <= 0 || y >= containerRect.height - img.height) {
-                vy *= -1;
-                y = Math.max(0, Math.min(containerRect.height - img.height, y));
-            }
-
-            // Apply drag
-            const drag = isMouseOver ? 0.95 : 0.99;
-            vx *= drag;
-            vy *= drag;
-
-            // Ensure minimum velocity
+            // Ensure a minimum velocity to prevent images from stopping
             const minVelocity = 0.5;
-            const currentVelocity = Math.sqrt(vx * vx + vy * vy);
+            const currentVelocity = Math.sqrt(velocityX * velocityX + velocityY * velocityY);
             if (currentVelocity < minVelocity) {
-                const scale = minVelocity / currentVelocity;
-                vx *= scale;
-                vy *= scale;
+                const velocityScale = minVelocity / currentVelocity;
+                velocityX *= velocityScale;
+                velocityY *= velocityScale;
             }
 
-            // Update position and velocity
-            img.dataset.x = x;
-            img.dataset.y = y;
-            img.dataset.vx = vx;
-            img.dataset.vy = vy;
+            // Update position and velocity in dataset
+            image.dataset.posX = posX;
+            image.dataset.posY = posY;
+            image.dataset.velocityX = velocityX;
+            image.dataset.velocityY = velocityY;
 
-            img.style.transform = `translate(${x}px, ${y}px)`;
+            // Apply the updated position to the image using CSS transform
+            image.style.transform = `translate(${posX}px, ${posY}px)`;
         });
 
-        requestAnimationFrame(moveImages);
+        // Continuously call animateImages to keep the images moving
+        requestAnimationFrame(animateImages);
     }
 
-    moveImages();
+    // Start the animation
+    animateImages();
 });

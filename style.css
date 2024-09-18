@@ -61,9 +61,9 @@ body{
       
       .logo span {
         display: inline-block;
-        animation: wave 1.5s 1;
-        animation-delay: calc(var(--i) * 0.1s);
-      }
+        animation: wave 1.5s infinite;
+        animation-delay: calc(var(--i) * 0.1s); /* Delay based on letter index */
+    }
 
     /*HAMBURGER-MENU*/ 
     #hamburger-nav{ 
@@ -368,7 +368,7 @@ article.icon {
     display: flex;
     justify-content: center;
     flex-direction: column;
-    height: 70vh;
+    height: 90;
 }
 .contact-info-upper-container{
     display: flex;
@@ -397,8 +397,8 @@ article.icon {
 
 .contact-icon{
     cursor: default;
-    width: 30%;
-    height: 30%;
+    width: 65px;
+    height: 65px;
 }
 .contact-info-container p:hover {
     background-color: rgb(0, 0, 0);
@@ -408,7 +408,7 @@ article.icon {
 }
 .contact-info-container p:hover a {
     text-decoration: none;
-    color: white; /* Change this to your desired color */
+    color: rgb(255, 255, 255); 
 }
 
 /**FOOTER**/
@@ -485,3 +485,4 @@ footer p{
     height: 50px; /* Set the height of the images */
     object-fit: contain; /* Ensure the aspect ratio is maintained */
   }
+  
