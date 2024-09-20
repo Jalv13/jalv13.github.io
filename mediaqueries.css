@@ -72,6 +72,10 @@ footer nav{
     border-radius: 2rem;
     background-color: white;
 }
+.btn-color-1,
+    .btn-color-2 {
+        border-color: rgb(32, 32, 32) 1 rem solid;
+    }
 .contact-info-container{
     margin: 0;
     padding: 1rem;
