@@ -418,7 +418,7 @@ margin: 1 rem;
 footer p{
     text-align: center;
 }
-
+ 
 /**ANIMATIONS**/
 @keyframes bounce_4ever {
     0%, 20%, 50%, 80%, 100% {
