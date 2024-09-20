@@ -154,8 +154,7 @@ body{
     #profile{
         display: flex;
         justify-content: center;
-        gap: 5rem;
-        height: 80vh;
+        gap: 1rem;
     }
     .section__pic-container{
         display: flex;

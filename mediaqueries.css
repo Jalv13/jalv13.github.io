@@ -61,6 +61,16 @@ footer nav{
 }
 .btn-container{
     padding: 1rem;
+    justify-content: center;
+    gap: 1rem;
+}
+.btn{
+    font-weight: 600; 
+    transition: all 300ms ease;
+    padding: 1rem;
+    width: 8rem;
+    border-radius: 2rem;
+    background-color: white;
 }
 .contact-info-container{
     margin: 0;
