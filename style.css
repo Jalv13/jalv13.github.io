@@ -269,6 +269,7 @@ body{
 .about-details-container{
     justify-content: center;
     flex-direction: column;
+    margin-bottom: 1rem;
 }
 .text-container{
     padding-bottom: 2rem;

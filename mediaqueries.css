@@ -59,13 +59,17 @@ footer nav{
     height:fit-content;
     margin-bottom: 2rem;
 }
-
+.menu-links{
+    margin-top: 2rem;
+}
 .about-containers, 
 .contact-info-upper-container,
 .btn-container{
     flex-wrap:wrap;
 }
-
+.about-containers{
+    margin-top: 0;
+    }
 .btn-container {
     padding: 1rem !important;
     justify-content: center !important;
@@ -151,7 +155,9 @@ footer nav{
         flex-wrap: wrap;
     }
     }
-
+    .about-containers{
+        margin-top: 0;
+        }
     @keyframes mobileWave {
         0%, 70%, 100% {
             transform: translateY(0);

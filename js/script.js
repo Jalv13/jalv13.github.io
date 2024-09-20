@@ -41,10 +41,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 posY = Math.max(0, Math.min(containerBounds.height - image.height, posY));
             }
 
-            // Apply a drag factor to gradually reduce the velocity
-            const dragFactor = 0.99;
-            velocityX *= dragFactor;
-            velocityY *= dragFactor;
 
             // Ensure a minimum velocity to prevent images from stopping
             const minVelocity = 0.5;
