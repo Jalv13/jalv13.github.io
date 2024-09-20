@@ -452,14 +452,6 @@ footer p{
     animation: bounce_sometimes 32s infinite; /* 32 seconds duration, infinite loop */
   }
   
-  @keyframes wave {
-    0%, 60%, 100% {
-      transform: translateY(0);
-    }
-    20% {
-      transform: translateY(-15px);
-    }
-  }
   
   @keyframes wave {
     0%, 70%, 100% {
@@ -469,7 +461,7 @@ footer p{
       transform: translateY(-15px); /* Move up */
     }
   }
-  
+ 
   .wave-images-container {
     position: relative;
     width: 100%;
