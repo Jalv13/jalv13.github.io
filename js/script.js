@@ -6,7 +6,7 @@ function toggleMenu() {
     hamburgerIcon.classList.toggle("open");
 }
 
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', () => { //
     const imageContainer = document.querySelector('.wave-images-container');
     const floatingImages = imageContainer.querySelectorAll('.wave-image');
     const containerBounds = imageContainer.getBoundingClientRect();
