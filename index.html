@@ -153,7 +153,14 @@
   footer.foot{border-top:1px solid var(--line);padding:26px 0;color:var(--muted-2);font-family:var(--mono);font-size:12px}
   .foot-inner{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
  
-  @media (max-width:880px){.feature-grid,.repo-grid{grid-template-columns:1fr 1fr}.resume-primary{grid-template-columns:1fr}}
+  @media (max-width:880px){.feature-grid,.repo-grid{grid-template-columns:1fr 1fr}.resume-primary{grid-template-columns:1fr}
+.status {
+      border-radius: 12px; 
+      padding: 14px 18px;  
+    }
+    .status .sep {
+      display: none; 
+    }}
   @media (max-width:640px){
     section{padding:72px 0}
     .feature-grid,.repo-grid,.skills-grid{grid-template-columns:1fr}
